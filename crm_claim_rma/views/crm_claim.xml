@@ -118,7 +118,8 @@
                             string="Sales"
                             attrs="{'invisible': ['|',('partner_id','=', False)]}"
                             context="{'search_default_partner_id': [partner_id],
-                            'search_default_user_id':False}" />
+			    'search_default_user_id':False, 
+			    'default_origin':code}" />
                         <button class="oe_inline oe_stat_button"
                             name="%(act_crm_claim_rma_purchase_orders)d"
                             type="action"
@@ -136,7 +137,8 @@
                             attrs="{'invisible': ['|',('partner_id','=', False)]}"
                             context="{'search_default_partner_id': [partner_id],
                             'group_by':'type',
-                            'search_default_user_id':False}" />
+                            'search_default_user_id':False, 
+			    'default_origin':code}" />
 
                         <button class="oe_inline oe_stat_button"
                             name="%(act_crm_claim_rma_refunds)d"
