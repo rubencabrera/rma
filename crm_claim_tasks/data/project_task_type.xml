@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+	   <record id="project_task_type_delivery" model="project.task.type">
+            <field name="name">Delivery</field>
+            <field name="consume_material">True</field>
+            <field name="sequence">10</field>
+            <field name="description">Default stage to deliver materials for a task</field>
+        </record>
+    </data>
+</openerp>
