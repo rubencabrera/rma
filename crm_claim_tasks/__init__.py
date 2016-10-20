@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright 2015 Vauxoo
-#    Copyright 2015 Eezee-It
-#    Copyright 2013 Camptocamp
-#    Copyright 2009-2013 Akretion,
-#    Author: Emmanuel Samyn, Raphaël Valyi, Sébastien Beau,
-#            Joel Grand-Guillaume
-#            Osval Reyes, Yanina Aular
+#    Copyright 2016 Praxya
+#    Author: Rubén Cabrera Martínez, Praxya
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -23,6 +18,5 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
 from . import models
 from . import wizards

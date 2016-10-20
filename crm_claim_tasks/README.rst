@@ -15,39 +15,37 @@ If a deadline is filled in the RMA, it's value is taken into new tasks.
 
 The user responsible in the RMA is assigned as the reviewer of the new task.
 
-Priority is also copied to new tasks.
+Priority is also copied to new tasks. 
+
+The related partner is the one in the Delivery Address RMA field. 
+
+Configuration.
+--------------
+
+Check option 'Consume Material' in Task Stage to generate a stock move when the
+task is in that stage.
+
+Go to Settings -> Configuration - > Projects and enable option "Manage time 
+estimation on tasks"
+
 
 TODO: README en inglés.
 
 Documentación previa:
 ---------------------
 
-El RMA ya se enlaza con tareas si en responsabilidades se asigna una tarea de
-proyecto. Pero lo que ahí se enlaza no es la tarea en la que se repara, sino
-el documento que da origen a la reclamación, por eso se llama 
-"Responsabilidades"
-
-+ Permite generar una tarea. El nombre se puede generar a partir del código de
-RMA. Campo 'code'
-+ ¿Debería asignarse un proyecto?
-  Opciones:
-  + Preguntar al crear la tarea.
-  + Introducir un menú de configuración para proyectos de reparaciones.
-  + Poner un campo en proyectos para indicar si son de reparaciones.
-+ Puede asignarse un revisor por defecto en función de algún campo del RMA.
-  El campo 'user_id' es el de responsable en el RMA.
-+ La fecha límite de la tarea puede tomarse del rma.
-  Campo 'date_deadline'.
-+ La descripción de la tarea debe tomarse de algún sitio, la descripción del 
-  RMA será poco útil para la tarea de reparación, pero para tener una referencia
-  inicial está bien.
 + Si hay que llevar materiales, se necesita la dependencia que lo permite.
   https://github.com/OCA/project-service
 + Los materiales se tomarán del pedido de venta/pedido de compra/devolución
 asociadas al RMA.
-+ La prioridad de la tarea puede tomarse del RMA.
-+ El cliente puede tomarse del RMA, delivery_address_id
+Campo de materiales en la RMA:
+picking_ids -(O2M)-> stock.picking
+En la tarea:
+material_ids  -(O2M)-> project.task.materials
+stock_move_ids -(M2M)-> stock.move
 
++ Crear en data etapas para las tareas que sean de las que generan movimiento
+  de stock. 
 
 
 It mainly contains the following features:
@@ -60,9 +58,8 @@ For further information, please visit:
 Known issues / Roadmap
 ======================
 
-* Currently, the warranty duration used is the one configured on the
-  products today, not the one which was configured when the product
-  has been sold.
+* Would it be interesting to check for incoming pickings in the RMA and take 
+  those products into account in materials tab? 
 
 Bug Tracker
 ===========
