@@ -188,8 +188,8 @@
                         <!-- Place for mass return button from crm_rma_lot_mass_return -->
                     </div>
                     <separator colspan="2" string="Product Returns"/>
-                    <field name="claim_line_ids">
-                        <tree string="Returned lines" create="false">
+                    <field name="claim_line_ids" editable="bottom">
+                        <tree string="Returned lines" >
                             <field name="claim_id" invisible="1"/>
                             <field name="state"/>
                             <field name="product_id"/>
