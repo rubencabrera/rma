@@ -9,7 +9,7 @@
                     <field name="claim_line_ids" position="attributes" >
                         <attribute name="editable">bottom</attribute>
                     </field>
-                    <xpath expr="/tree[@string='Returned lines']" >
+		    <xpath expr="//tree[@string='Returned lines']" position="attributes">
                         <attribute name="create">true</attribute>
                     </xpath>
             </field>
