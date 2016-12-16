@@ -23,3 +23,4 @@ from openerp import fields, models
 class ClaimLine(models.Model):
     _inherit = "claim.line"
     prodlot_id = fields.Many2one(domain="[('product_id', '=', product_id)]")
+    guarantee_limit = fields.Date(readonly=False)
