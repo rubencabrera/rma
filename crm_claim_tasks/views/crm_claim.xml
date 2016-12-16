@@ -34,8 +34,8 @@
                             type="action"
                             string="Tasks"
                             icon="fa-tasks"
-                            attrs="{'invisible': ['|',('partner_id','=', False)]}"
-                            context="{'search_default_partner_id': [partner_id],
+                            attrs="{'invisible': [('partner_id','=', False)]}"
+                            context="{'search_default_claim_id': [active_id],
                             'search_default_user_id':False, 
 			    'default_name':code,
 			    'default_reviewer_id':user_id,
