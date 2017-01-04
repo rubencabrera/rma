@@ -6,45 +6,32 @@
         id="act_crm_claim_rma_tasks"
         name="Related tasks"
         res_model="project.task"
-	src_model="crm.claim"
+        src_model="crm.claim"
 	/>
 
-        <record model="ir.ui.view" id="crm_claim_rma_form_view_tasks">
-            <field name="name">CRM - Claim tasks</field>
-            <field name="model">crm.claim</field>
-            <field name="inherit_id" ref="crm_claim_rma.crm_claim_rma_form_view"/>
-            <field name="arch" type="xml">
-                <!-- Header/workflow Buttons -->
-                <!--<xpath expr="//field[@name='stage_id']" position="before">-->
-                    <!--<button name="%(account.action_account_invoice_refund)d"-->
-                        <!--class="oe_inline"-->
-                        <!--type='action' string='New Task'-->
-                        <!--context="{-->
-                            <!--'invoice_ids': [invoice_id],-->
-                            <!--'claim_line_ids': claim_line_ids,-->
-                            <!--'description': name,-->
-                            <!--'claim_id': id,-->
-                            <!--}"/>-->
-                <!--</xpath>-->
-                <!-- Smart buttons -->
-		<xpath expr="//div[@name='buttons']" 
-			position="inside">
-                        <button class="oe_inline oe_stat_button"
-                            name="%(act_crm_claim_rma_tasks)d"
-                            type="action"
-                            string="Tasks"
-                            icon="fa-tasks"
-                            attrs="{'invisible': ['|',('partner_id','=', False)]}"
-                            context="{'search_default_partner_id': [partner_id],
-                            'search_default_user_id':False, 
-			    'default_name':code,
-			    'default_reviewer_id':user_id,
-			    'default_priority':priority,
-			    'default_date_deadline':date_deadline,
-			    }" 
-			    />
-                </xpath>
-            </field>
-        </record>
+    <record model="ir.ui.view" id="crm_claim_rma_form_view_tasks">
+        <field name="name">CRM - Claim tasks</field>
+        <field name="model">crm.claim</field>
+        <field name="inherit_id" ref="crm_claim_rma.crm_claim_rma_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Smart buttons -->
+            <xpath expr="//div[@name='buttons']" 
+                position="inside">
+                <button class="oe_inline oe_stat_button"
+                    name="%(act_crm_claim_rma_tasks)d"
+                    type="action"
+                    string="Tasks"
+                    icon="fa-tasks"
+                    attrs="{'invisible': [('partner_id','=', False)]}"
+                    context="{'search_default_claim_id': active_id,
+                        'default_name':code,
+                        'default_reviewer_id':user_id,
+                        'default_priority':priority,
+                        'default_date_deadline':date_deadline,
+                    }" 
+                />
+            </xpath>
+        </field>
+    </record>
     </data>
 </openerp>

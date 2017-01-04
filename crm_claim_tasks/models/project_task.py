@@ -16,7 +16,8 @@
 #
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# ##############################################################################
+#
+##############################################################################
 
 from openerp import _, fields, models, api
 import logging
@@ -29,22 +30,22 @@ class ProjectTask(models.Model):
 
     claim_id = fields.Many2one('crm.claim', string=_('Claim'))
 
-    # @api.model
-    # def create(self, values):
-        # """
-        # Check for outgoing pickings in the RMA to check if any materials
-        # are to be added to the task.
-        # """
-        # if values.get('claim_id', False) is not False:
-            # # If there's a claim, get its pickings and check their type
-            # claim = self.env['crm.claim'].browse(values.get('claim_id'))
-            # if claim.picking_ids is not False and claim.picking_ids != []:
-                # for picking in claim.picking_ids:
-                    # if picking.picking_type_id == self.env.ref(
-                                    # 'stock.picking_type_out').id:
-                        # moves = self.env['stock.move']
-                        # for move in picking.move_lines:
-                            # moves |= move
-                        # _logger.debug('Moves: {0}'.format(moves))
-        # res = super(ProjectTask, self).create(values)
-        # return res
+    @api.model
+    def create(self, values):
+        """
+        Check for outgoing pickings in the RMA to check if any materials
+        are to be added to the task.
+        """
+        if values.get('claim_id', False) is not False:
+            # If there's a claim, get its pickings and check their type
+            claim = self.env['crm.claim'].browse(values.get('claim_id'))
+            if claim.picking_ids is not False and claim.picking_ids != []:
+                for picking in claim.picking_ids:
+                    if picking.picking_type_id == self.env.ref(
+                                    'stock.picking_type_out').id:
+                        moves = self.env['stock.move']
+                        for move in picking.move_lines:
+                            moves |= move
+                        _logger.debug('Moves: {0}'.format(moves))
+        res = super(ProjectTask, self).create(values)
+        return res

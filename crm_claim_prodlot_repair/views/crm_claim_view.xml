@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Rubén Cabrera Martínez, Praxya Soluciones
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<record id="crm_claim_repair" model="ir.ui.view">
+    <field name="name">CRM - Claim repairs</field>
+    <field name="model">crm.claim</field>
+    <field name="inherit_id" ref="crm_claim_rma.crm_claim_rma_form_view"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@string='New Refund']" position="after">
+            <button name="create_repair_tasks"
+                class="oe_inline"
+                string="Create Tasks"
+                type="object" 
+                />
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>
