@@ -56,6 +56,9 @@ coverage.xml
 # Rope
 .ropeproject
 
+# ag searcher
+.agignore
+
 # Sphinx documentation
 docs/_build/
 
