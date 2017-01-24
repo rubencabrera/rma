@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rma (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-27 11:45+0000\n"
-"PO-Revision-Date: 2016-11-25 14:58+0000\n"
+"POT-Creation-Date: 2017-01-07 05:48+0000\n"
+"PO-Revision-Date: 2017-01-13 09:26+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Portuguese (http://www.transifex.com/oca/OCA-rma-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -230,7 +230,7 @@ msgstr ""
 #. module: crm_rma_lot_mass_return
 #: field:claim.line.wizard,product_id:0
 msgid "Product"
-msgstr ""
+msgstr "Produto"
 
 #. module: crm_rma_lot_mass_return
 #: help:claim.line.wizard,lot_id:0 help:claim.line.wizard,product_id:0
@@ -241,7 +241,7 @@ msgstr ""
 #: field:returned.lines.from.serial.wizard,scan_data:0
 #: field:returned.lines.from.serial.wizard,scaned_data:0
 msgid "Products"
-msgstr ""
+msgstr "Produtos"
 
 #. module: crm_rma_lot_mass_return
 #: field:returned.lines.from.serial.wizard,lines_list_id:0

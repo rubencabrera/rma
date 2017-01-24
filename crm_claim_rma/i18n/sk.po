@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rma (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-27 11:45+0000\n"
-"PO-Revision-Date: 2016-11-22 16:25+0000\n"
+"POT-Creation-Date: 2016-12-24 04:45+0000\n"
+"PO-Revision-Date: 2016-12-27 08:26+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Slovak (http://www.transifex.com/oca/OCA-rma-8-0/language/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,7 @@ msgstr ""
 #. module: crm_claim_rma
 #: view:claim_make_picking.wizard:crm_claim_rma.view_claim_picking
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušiť"
 
 #. module: crm_claim_rma
 #: code:addons/crm_claim_rma/models/claim_line.py:314
@@ -81,7 +81,7 @@ msgstr ""
 #: model:ir.model,name:crm_claim_rma.model_crm_claim
 #: field:stock.picking,claim_id:0
 msgid "Claim"
-msgstr ""
+msgstr "Reklamácia"
 
 #. module: crm_claim_rma
 #: view:claim.line:crm_claim_rma.crm_claim_line_form_view
@@ -111,7 +111,7 @@ msgstr ""
 #. module: crm_claim_rma
 #: help:claim.line,claim_type:0
 msgid "Claim classification"
-msgstr ""
+msgstr "Klasifikácia reklamácie"
 
 #. module: crm_claim_rma
 #: field:claim.line,claim_diagnosis:0
@@ -205,7 +205,7 @@ msgstr ""
 #: code:addons/crm_claim_rma/models/crm_claim.py:166
 #, python-format
 msgid "Customer"
-msgstr ""
+msgstr "Zákazník"
 
 #. module: crm_claim_rma
 #: code:addons/crm_claim_rma/models/crm_claim.py:170
@@ -586,7 +586,7 @@ msgstr ""
 #. module: crm_claim_rma
 #: selection:claim.line,claim_origin:0
 msgid "Other"
-msgstr ""
+msgstr "Ostatné"
 
 #. module: crm_claim_rma
 #: view:crm.claim:crm_claim_rma.crm_claim_rma_form_view
@@ -895,7 +895,7 @@ msgstr ""
 #. module: crm_claim_rma
 #: selection:claim.line,applicable_guarantee:0
 msgid "Supplier"
-msgstr ""
+msgstr "Dodávateľ"
 
 #. module: crm_claim_rma
 #: help:claim.line,invoice_line_id:0
