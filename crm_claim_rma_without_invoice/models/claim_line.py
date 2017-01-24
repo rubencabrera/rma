@@ -17,9 +17,27 @@
 #
 ##############################################################################
 
-from openerp import fields, models
+from openerp import fields, models, api
 
 
 class ClaimLine(models.Model):
     _inherit = "claim.line"
     prodlot_id = fields.Many2one(domain="[('product_id', '=', product_id)]")
+    product_returned_quantity = fields.Float(default=1)
+
+    @api.onchange('product_id')
+    @api.depends('product_id.list_price')
+    def _onchange_product_id(self):
+        """
+        Load list_price from product information
+        """
+        if self.product_id:
+            self.unit_sale_price = self.product_id.list_price
+
+
+    @api.onchange('product_returned_quantity','unit_sale_price')
+    def _onchange_price_quantity(self):
+        """
+        Load list_price from product information
+        """
+        self.return_value = self.product_returned_quantity * self.unit_sale_price
