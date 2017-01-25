@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                     <field name="claim_line_ids" position="attributes" >
                         <attribute name="editable">bottom</attribute>
+                        <attribute name="context">"{'default_claim_id': active_id}"</attribute>
                     </field>
                     <xpath expr="//tree[@string='Returned lines']" position="attributes" >
                         <attribute name="create">true</attribute>
