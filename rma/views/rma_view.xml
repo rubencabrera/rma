@@ -31,7 +31,7 @@
                     <field name="state"/>
                     <field name="product_id"/>
                     <field name="name"/>
-                    <field name="operation"/>
+                    <field name="operation_id"/>
                     <field name="uom_id" groups="product.group_uom"/>
                     <field name="product_qty"/>
                     <field name="qty_to_receive"/>
@@ -80,7 +80,7 @@
                             <field name="assigned_to"/>
                             <field name="product_id"/>
                             <field name="price_unit"/>
-                            <field name="operation"/>
+                            <field name="operation_id"/>
                             <field name="invoice_line_id" invisible="True"/>
                             <field name="uom_id" groups="product.group_uom" readonly="1"/>
                             <field name="product_qty"/>
@@ -245,7 +245,7 @@
                                     <field name="origin"/>
                                     <field name="product_id"/>
                                     <field name="name"/>
-                                    <field name="operation"/>
+                                    <field name="operation_id"/>
                                     <field name="product_qty"/>
                                     <field name="uom_id" groups="product.group_uom"/>
                                     <field name="qty_to_receive"/>
@@ -382,7 +382,7 @@
                                     <field name="origin"/>
                                     <field name="product_id"/>
                                     <field name="name"/>
-                                    <field name="operation"/>
+                                    <field name="operation_id"/>
                                     <field name="product_qty"/>
                                     <field name="uom_id" groups="product.group_uom"/>
                                     <field name="qty_to_receive"/>
@@ -452,6 +452,39 @@
                     </group>
                </search>
             </field>
+        </record>
+
+        <record id="rma_operation_tree" model="ir.ui.view">
+            <field name="name">rma.operation.tree</field>
+            <field name="model">rma.operation</field>
+            <field name="arch" type="xml">
+                <tree string="RMA Operations">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rma_operation_form" model="ir.ui.view">
+            <field name="name">rma.operation.form</field>
+            <field name="model">rma.operation</field>
+            <field name="arch" type="xml">
+                <form string="RMA Operations">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_rma_operation" model="ir.actions.act_window">
+            <field name="name">Operations</field>
+            <field name="res_model">rma.operation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="rma_operation_tree"/>
         </record>
 
         <record id="action_rma_customer" model="ir.actions.act_window">
@@ -545,6 +578,19 @@
             groups="rma.group_rma_user"
             action="action_rma_supplier_lines"
             />
+
+        <menuitem id="menu_rma_config"
+            name="RMA"
+            groups="rma.group_rma_user"
+            sequence="30"
+            parent="stock.menu_stock_config_settings"/>
+
+        <menuitem id="menu_rma_operation"
+            name="Operations"
+            groups="rma.group_rma_user"
+            sequence="35"
+            parent="rma.menu_rma_config"
+            action="action_rma_operation"/>
 
     </data>
 </odoo>

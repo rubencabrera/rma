@@ -223,11 +223,11 @@ class RmaMakePicking(models.TransientModel):
                 raise exceptions.Warning(
                     _('RMA %s is not approved') %
                     line.rma_id.name)
-            if line.operation not in ('replace', 'repair') and \
+            if line.operation_id.type not in ('replace', 'repair') and \
                     picking_type == 'out' and line.type == 'customer':
                 raise exceptions.Warning(
                     _('Only refunds allowed for at least one line'))
-            if line.operation not in ('replace', 'repair') and \
+            if line.operation_id.type not in ('replace', 'repair') and \
                     picking_type == 'in' and line.type == 'supplier':
                 raise exceptions.Warning(
                     _('Only refunds allowed for at least one line'))

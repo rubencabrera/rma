@@ -26,7 +26,8 @@
              'wizards/rma_make_picking.xml',
              'wizards/rma_refund.xml',
              'wizards/stock_config_settings.xml',
-             'data/stock.xml'],
+             'demo/stock.xml',
+             'demo/rma.xml'],
     'installable': True,
     'auto_install': False,
 }
