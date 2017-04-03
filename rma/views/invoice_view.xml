@@ -61,7 +61,6 @@
             </data>
         </field>
     </record>
-    </data>
 
     <record id="action_invoice_line" model="ir.actions.act_window">
         <field name="name">Invoice Line</field>
@@ -70,5 +69,5 @@
         <field name="view_mode">form</field>
         <field name="view_id" ref="account.view_invoice_line_form"/>
     </record>
-
+</data>
 </openerp>
