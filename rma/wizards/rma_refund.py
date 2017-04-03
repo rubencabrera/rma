@@ -6,7 +6,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html)
 from openerp import models, fields, exceptions, api, _
 import openerp.addons.decimal_precision as dp
-from openerp.exceptions import UserError
+from openerp.exceptions import Warning as UserError
 
 
 class RmaRefund(models.TransientModel):

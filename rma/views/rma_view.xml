@@ -42,7 +42,7 @@
                     <field name="qty_outgoing"/>
                     <field name="qty_delivered"/>
                     <field name="qty_refunded"/>
-                    <field name="price_unit"/>
+                    <field name="price_unit" widget='monetary' />
                     <!--<field name="refund_status"/>-->
                     <!--<field name="ship_status"/>-->
                 </tree>

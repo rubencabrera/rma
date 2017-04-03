@@ -6,7 +6,7 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html)
 from openerp import _, api, fields, models
 from openerp.addons import decimal_precision as dp
-from openerp.exceptions import UserError
+from openerp.exceptions import Warning as UserError
 
 
 class RmaOrder(models.Model):
@@ -450,8 +450,10 @@ class RmaOrderLine(models.Model):
                                  ondelete='restrict', index=True,
                                  readonly=True,
                                  states={'draft': [('readonly', False)]})
-    price_unit = fields.Monetary(string='Price Unit', readonly=True,
-                                 states={'draft': [('readonly', False)]})
+    price_unit = fields.Float(string='Price Unit', readonly=True,
+                              states={'draft': [('readonly', False)]},
+                              digits_compute=dp.get_precision('Product Price'),
+                              )
     move_ids = fields.One2many('stock.move', 'rma_id',
                                string='Stock Moves', readonly=True,
                                states={'draft': [('readonly', False)]},
