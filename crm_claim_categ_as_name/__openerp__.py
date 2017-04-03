@@ -23,7 +23,7 @@
 
 {
     'name': 'crm_claim_categ_as_name',
-    'version': '1.0',
+    'version': '8.0.2.0.0',
     'category': 'Generic Modules/CRM & SRM',
     'license': 'AGPL-3',
     'description':

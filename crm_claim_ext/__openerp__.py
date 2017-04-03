@@ -23,7 +23,7 @@
 
 {
     'name': 'CRM claim extension',
-    'version': '1.0',
+    'version': '8.0.2.0.0',
     'category': 'Generic Modules/CRM & SRM',
     'description': """
 Akretion - Emmanuel Samyn

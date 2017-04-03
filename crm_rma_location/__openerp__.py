@@ -4,7 +4,7 @@
 
 {
     'name': 'RMA Location',
-    'version': '9.0.1.0.0',
+    'version': '8.0.2.0.0',
     'author': "Vauxoo, Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'website': 'http://www.camptocamp.com,http://www.vauxoo.com',

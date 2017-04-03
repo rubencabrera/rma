@@ -12,7 +12,7 @@
 
 {
     'name': 'RMA Stock Location',
-    'version': '9.0.1.0.0',
+    'version': '8.0.2.0.0',
     'author': "Akretion,Vauxoo,Camptocamp,Odoo Community Association (OCA)",
     'maintainer': 'Camptocamp',
     'website': 'http://www.camptocamp.com,http://www.vauxoo.com',
