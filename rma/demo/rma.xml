@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp noupdate="1">
-<data>
+<openerp>
+<data noupdate="1">
     <record id="rma_operation_replace" model="rma.operation">
         <field name="name">Replace</field>
         <field name="code">RPL</field>
