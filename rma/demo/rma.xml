@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
+<openerp noupdate="1">
+<data>
     <record id="rma_operation_replace" model="rma.operation">
         <field name="name">Replace</field>
         <field name="code">RPL</field>
@@ -17,4 +18,5 @@
         <field name="code">RF</field>
         <field name="type">refund</field>
     </record>
-</odoo>
+</data>
+</openerp>
