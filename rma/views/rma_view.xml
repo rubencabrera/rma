@@ -2,6 +2,16 @@
 <openerp>
     <data>
 
+	<record id="rma_sequence_type" model="ir.sequence.type">
+	    <field name="name">Rma Order</field>
+	    <field name="code">rma.order</field>
+	</record>
+
+	<record id="rma_order_supplier_sequence_type" model="ir.sequence.type">
+	    <field name="name">Rma Order Supplier</field>
+	    <field name="code">rma.order.supplier</field>
+	</record>
+
         <record id="rma_seq" model="ir.sequence">
             <field name="name">RMA sequence</field>
             <field name="code">rma.order</field>
