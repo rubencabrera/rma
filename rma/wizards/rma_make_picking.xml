@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<odoo>
+<openerp>
     <record id="view_rma_picking" model="ir.ui.view">
         <field name="name">rma_picking</field>
         <field name="model">rma_make_picking.wizard</field>
@@ -113,4 +113,4 @@
         <field name="model">rma.order.line</field>
     </record>
 
-</odoo>
+</openerp>
