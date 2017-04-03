@@ -149,11 +149,11 @@ class RmaOrder(models.Model):
             'product_id': line.product_id.id,
             'name': line.name,
             'origin': line.invoice_id.number,
-            'uom_id': line.uom_id.id,
+            'uom_id': line.uos_id.id,
             'operation_id': line.product_id.categ_id.rma_operation_id.id,
             'product_qty': line.quantity,
             'price_unit': line.invoice_id.currency_id.compute(
-                line.price_unit, line.currency_id, round=False),
+                line.price_unit, line.invoice_id.currency_id, round=False),
             'rma_id': self._origin.id
         }
         return data
@@ -165,7 +165,7 @@ class RmaOrder(models.Model):
         if not self.partner_id:
             self.partner_id = self.add_invoice_id.partner_id.id
         new_lines = self.env['rma.order.line']
-        for line in self.add_invoice_id.invoice_line_ids:
+        for line in self.add_invoice_id.invoice_line:
             # Load a PO line only once
             if line in self.rma_line_ids.mapped('invoice_line_id'):
                 continue
