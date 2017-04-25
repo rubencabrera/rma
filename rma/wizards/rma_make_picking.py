@@ -216,7 +216,7 @@ class RmaMakePickingItem(models.TransientModel):
         'stock.location.route', string='Route')
     partner_address_id = fields.Many2one(
         'res.partner', readonly=True,
-        string='Supplier address in case of dropship',
+        string='Partner Address',
         help="This address of the supplier in case of Customer RMA operation "
              "dropship. The address of the customer in case of Supplier RMA "
              "operation dropship")

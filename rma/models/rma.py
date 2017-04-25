@@ -598,7 +598,7 @@ class RmaOrderLine(models.Model):
     partner_address_id = fields.Many2one(
         'res.partner', readonly=True,
         states={'draft': [('readonly', False)]},
-        string='Supplier Address',
+        string='Partner Address',
         help="This address of the supplier in case of Customer RMA operation "
              "dropship. The address of the customer in case of Supplier RMA "
              "operation dropship")
