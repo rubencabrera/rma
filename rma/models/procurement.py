@@ -19,12 +19,12 @@ class ProcurementOrder(models.Model):
         if procurement.rma_line_id:
             line = procurement.rma_line_id
             if line.rma_id.delivery_address_id:
-                res['partner_dest_id'] = line.rma_id.delivery_address_id.id
+                res['partner_id'] = line.rma_id.delivery_address_id.id
             else:
                 seller = line.product_id.seller_ids.filtered(
                     lambda p: p.name == line.invoice_id.partner_id)
                 partner = seller.warranty_return_address
-                res['partner_dest_id'] = partner.id
+                res['partner_id'] = partner.id
             res['rma_id'] = procurement.rma_line_id.id
         return res
 
