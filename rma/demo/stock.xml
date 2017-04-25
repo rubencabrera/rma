@@ -11,28 +11,28 @@
     </record>
 
     <record id="seq_picking_type_rma_cust_out" model="ir.sequence">
-        <field name="name">RMA CUSTOMER OUT</field>
+        <field name="name">DOC</field>
         <field name="prefix">RCO</field>
         <field name="padding">5</field>
         <field name="company_id" eval="False"/>
     </record>
 
     <record id="seq_picking_type_rma_cust_in" model="ir.sequence">
-        <field name="name">RMA CUSTOMER IN</field>
+        <field name="name">INC</field>
         <field name="prefix">RCI</field>
         <field name="padding">5</field>
         <field name="company_id" eval="False"/>
     </record>
 
     <record id="seq_picking_type_rma_sup_out" model="ir.sequence">
-        <field name="name">RMA SUPPLIER OUT</field>
+        <field name="name">DOS</field>
         <field name="prefix">RSO</field>
         <field name="padding">5</field>
         <field name="company_id" eval="False"/>
     </record>
 
     <record id="seq_picking_type_rma_sup_in" model="ir.sequence">
-        <field name="name">RMA SUPPLIER IN</field>
+        <field name="name">INS</field>
         <field name="prefix">RSI</field>
         <field name="padding">5</field>
         <field name="company_id" eval="False"/>
