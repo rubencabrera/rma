@@ -5,6 +5,9 @@
         <field name="name">Replace</field>
         <field name="code">RPL</field>
         <field name="type">replace</field>
+        <field name="route_customer" ref="rma.route_rma_customer"/>
+        <field name="route_supplier" ref="rma.route_rma_supplier"/>
+        <field name="is_dropship">False</field>
     </record>
 
     <record id="rma_operation_repair" model="rma.operation">
@@ -17,6 +20,18 @@
         <field name="name">Refund</field>
         <field name="code">RF</field>
         <field name="type">refund</field>
+        <field name="route_customer" ref="rma.route_rma_customer"/>
+        <field name="route_supplier" ref="rma.route_rma_supplier"/>
+        <field name="is_dropship">False</field>
+    </record>
+
+    <record id="rma_operation_ds_replace" model="rma.operation">
+        <field name="name">Replace with dropship</field>
+        <field name="code">DSRPL</field>
+        <field name="type">replace</field>
+        <field name="route_customer" ref="rma.route_rma_dropship"/>
+        <field name="route_supplier" ref="rma.route_rma_dropship"/>
+        <field name="is_dropship">True</field>
     </record>
 </data>
 </openerp>
