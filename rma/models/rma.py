@@ -578,7 +578,7 @@ class RmaOrderLine(models.Model):
                                  ondelete='restrict', index=True,
                                  readonly=True,
                                  states={'draft': [('readonly', False)]})
-    price_unit = fields.Monetary(string='Price Unit', readonly=True,
+    price_unit = fields.Float(string='Price Unit', readonly=True,
                                  states={'draft': [('readonly', False)]})
     move_ids = fields.One2many('stock.move', 'rma_id',
                                string='Stock Moves', readonly=True,
