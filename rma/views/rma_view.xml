@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+	<!--Comentado en el merge, pertenece a HEAD, no a 25042017-->
+	<!--<record id="rma_sequence_type" model="ir.sequence.type">-->
+	    <!--<field name="name">Rma Order</field>-->
+	    <!--<field name="code">rma.order</field>-->
+	<!--</record>-->
 
-	<record id="rma_sequence_type" model="ir.sequence.type">
-	    <field name="name">Rma Order</field>
-	    <field name="code">rma.order</field>
-	</record>
-
-	<record id="rma_order_supplier_sequence_type" model="ir.sequence.type">
-	    <field name="name">Rma Order Supplier</field>
-	    <field name="code">rma.order.supplier</field>
-	</record>
-
+	<!--<record id="rma_order_supplier_sequence_type" model="ir.sequence.type">-->
+	    <!--<field name="name">Rma Order Supplier</field>-->
+	    <!--<field name="code">rma.order.supplier</field>-->
+	<!--</record>-->
         <record id="rma_seq" model="ir.sequence">
             <field name="name">RMA sequence</field>
             <field name="code">rma.order</field>
@@ -41,7 +40,10 @@
                     <field name="state"/>
                     <field name="product_id"/>
                     <field name="name"/>
+                    <field name="origin"/>
                     <field name="operation_id"/>
+                    <field name="partner_address_id"/>
+                    <field name="warranty_state"/>
                     <field name="uom_id" groups="product.group_uom"/>
                     <field name="product_qty"/>
                     <field name="qty_to_receive"/>
@@ -84,16 +86,20 @@
                     </div>
                     <group>
                         <group col="4" string="RMA">
-                            <field name="rma_id"/>
-                            <field name="state"/>
-                            <field name="requested_by"/>
-                            <field name="assigned_to"/>
-                            <field name="product_id"/>
-                            <field name="price_unit"/>
-                            <field name="operation_id"/>
+                            <field name="rma_id" readonly="1"/>
+                            <field name="origin"/>
+                            <field name="state" readonly="1"/>
+                            <field name="requested_by" readonly="1"/>
+                            <field name="assigned_to" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="price_unit" readonly="1"/>
+                            <field name="operation_id" readonly="1"/>
+                            <field name="partner_address_id" readonly="1"/>
                             <field name="invoice_line_id" invisible="True"/>
                             <field name="uom_id" groups="product.group_uom" readonly="1"/>
                             <field name="product_qty"/>
+                            <field name="warranty_state"/>
+                            <field name="limit"/>
                         </group>
                     </group>
                     <group>
@@ -211,6 +217,13 @@
                             <field name="line_count" widget="statinfo"
                                    string="RMA Lines"/>
                         </button>
+                        <button type="object" name="action_view_supplier_lines"
+                                class="oe_stat_button"
+                                icon="fa-list"
+                                groups="rma.group_rma_user">
+                            <field name="supplier_line_count" widget="statinfo"
+                                   string="Supplier RMA Lines"/>
+                        </button>
                     </div>
                     <div class="oe_title">
                         <h1>
@@ -223,7 +236,7 @@
                                string="Customer"/>
                         <field name="add_invoice_id"
                                domain="[('type','=','out_invoice'),'|',('commercial_partner_id','=',partner_id),
-                               ('partner_id','=',partner_id)]"
+                               ('partner_id','=',partner_id), (('state','not in',['draft','cancel']))]"
                                attrs="{'invisible':[('state','not in',['draft','to_approve'])]}"/>
                     </group>
                     <group>
@@ -241,6 +254,7 @@
                                    groups='rma.group_rma_delivery_invoice_address'/>
                             <field name="warehouse_id"/>
                             <field name="date_rma"/>
+                            <field name="type" invisible="1"/>
                         </group>
                     </group>
                     <notebook colspan="4">
@@ -255,7 +269,15 @@
                                     <field name="origin"/>
                                     <field name="product_id"/>
                                     <field name="name"/>
+                                    <field name="warranty_state"/>
+                                    <field name="limit"/>
                                     <field name="operation_id"/>
+                                    <field name="partner_address_id"/>
+                                    <field name="supplier_inv_line_id"
+                                           domain="[('product_id','=',product_id), ('invoice_id.type','=','in_invoice'),
+                                            '|',('invoice_id.commercial_partner_id','=',partner_address_id),
+                                            ('invoice_id.partner_id','=', partner_address_id)]"
+                                            options="{'no_create': True}"/>
                                     <field name="product_qty"/>
                                     <field name="uom_id" groups="product.group_uom"/>
                                     <field name="qty_to_receive"/>
@@ -359,8 +381,8 @@
                                domain="[('supplier','=',True)]"
                                string="Supplier"/>
                         <field name="add_invoice_id"
-                               domain="[('type','=','in_invoice'),
-                               '|',('commercial_partner_id','=',partner_id),('partner_id','=',partner_id)]"
+                               domain="[('type','=','in_invoice'),'|',('commercial_partner_id','=',partner_id),
+                               ('partner_id','=',partner_id), (('state','not in',['draft','cancel']))]"
                                attrs="{'invisible':[('state','not in',['draft','to_approve'])]}"/>
                     </group>
                     <group>
@@ -378,6 +400,7 @@
                                    groups='rma.group_rma_delivery_invoice_address'/>
                             <field name="warehouse_id"/>
                             <field name="date_rma"/>
+                            <field name="type" invisible="1"/>
                         </group>
                     </group>
                     <notebook colspan="4">
@@ -392,7 +415,10 @@
                                     <field name="origin"/>
                                     <field name="product_id"/>
                                     <field name="name"/>
+                                    <field name="warranty_state"/>
+                                    <field name="limit"/>
                                     <field name="operation_id"/>
+                                    <field name="partner_address_id"/>
                                     <field name="product_qty"/>
                                     <field name="uom_id" groups="product.group_uom"/>
                                     <field name="qty_to_receive"/>
@@ -472,6 +498,9 @@
                     <field name="code"/>
                     <field name="name"/>
                     <field name="type"/>
+                    <field name="route_customer"/>
+                    <field name="route_supplier"/>
+                    <field name="is_dropship"/>
                 </tree>
             </field>
         </record>
@@ -481,9 +510,14 @@
             <field name="model">rma.operation</field>
             <field name="arch" type="xml">
                 <form string="RMA Operations">
-                    <field name="code"/>
-                    <field name="name"/>
-                    <field name="type"/>
+                    <group colspan="4" col="2">
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="type"/>
+                        <field name="route_customer"/>
+                        <field name="route_supplier"/>
+                        <field name="is_dropship"/>
+                    </group>
                 </form>
             </field>
         </record>
@@ -502,7 +536,8 @@
             <field name="res_model">rma.order</field>
             <field name="view_type">form</field>
             <field name="domain">[('type','=', 'customer')]</field>
-            <field name="context">{"search_default_requested_by":uid}</field>
+            <field name="context">{"search_default_requested_by":uid,
+                'customer':1}</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_rma_tree"/>
         </record>
@@ -521,7 +556,9 @@
             <field name="name">RMA Customer Lines</field>
             <field name="res_model">rma.order.line</field>
             <field name="domain">[('state','in', ['approved', 'done']),
-                ('type','=', 'customer')]</field>
+                ('type','=', 'customer'), ('warranty_state','!=', 'expired'),
+                ('is_dropship','=', False)
+                ]</field>
             <field name="context">{"search_default_requested_by":uid}</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -532,7 +569,7 @@
             <field name="name">RMA Supplier Lines</field>
             <field name="res_model">rma.order.line</field>
             <field name="domain">[('state','in', ['approved', 'done']),
-                ('type','=', 'supplier')]</field>
+                ('type','=', 'supplier'), ('warranty_state','!=', 'expired')]</field>
             <field name="context">{"search_default_requested_by":uid}</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -575,7 +612,7 @@
 
         <menuitem
             id="menu_rma_line_customer"
-            sequence="30"
+            sequence="40"
             parent="menu_rma"
             groups="rma.group_rma_user"
             action="action_rma_customer_lines"
@@ -583,7 +620,7 @@
 
         <menuitem
             id="menu_rma_line_supplier"
-            sequence="30"
+            sequence="50"
             parent="menu_rma"
             groups="rma.group_rma_user"
             action="action_rma_supplier_lines"
