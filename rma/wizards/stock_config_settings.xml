@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
 		   <!--Comentado para el merge-->
                 <!--<xpath expr="//group[@name='traceability']" position="after">-->
-                <xpath expr="//group[@name='shipping']" position="after">
+                <xpath expr="//group[@name='traceability']" position="after">
                     <group string="Return Merchandise Authorization">
                         <field name="group_rma_delivery_address" widget="radio"/>
                     </group>
