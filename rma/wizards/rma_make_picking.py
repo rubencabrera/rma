@@ -94,8 +94,8 @@ class RmaMakePicking(models.TransientModel):
                 delivery_address = line.rma_id.delivery_address_id.id
             else:
                 seller = line.product_id.seller_ids.filtered(
-                    lambda p: p.name ==
-                    line.invoice_line_id.invoice_id.partner_id)
+                    lambda p: p.name == \
+                              line.invoice_line_id.invoice_id.partner_id)
                 partner = seller.warranty_return_address
                 delivery_address = partner.id
         return delivery_address
@@ -110,7 +110,7 @@ class RmaMakePicking(models.TransientModel):
                 else:
                     location = line.rma_id.warehouse_id.lot_rma_id
             else:
-                location = self.env.ref('stock.stock_location_suppliers')
+                location = line.rma_id.warehouse_id.lot_rma_id
 
         else:
             # delivery order
@@ -118,14 +118,14 @@ class RmaMakePicking(models.TransientModel):
                 location = self.env.ref('stock.stock_location_customers')
             else:
                 if line.is_dropship:
-                    location = self.env.ref('stock.stock_location_customers')
+                    location = self.env.ref('stock.stock_location_suppliers')
                 else:
                     location = line.rma_id.warehouse_id.lot_rma_id
         warehouse = line.rma_id.warehouse_id
         delivery_address = self._get_address(line, picking_type)
 
         procurement_data = {
-            'name': line.rma_id.name,
+            'name': line.operation_id.name,
             'group_id': group.id,
             'origin': line.rma_id.name,
             'warehouse_id': warehouse.id,
@@ -133,7 +133,6 @@ class RmaMakePicking(models.TransientModel):
             'product_id': line.product_id.id,
             'product_qty': qty,
             'partner_dest_id': delivery_address,
-            'partner_id': line.invoice_line_id.invoice_id.partner_id,
             'product_uom': line.product_id.product_tmpl_id.uom_id.id,
             'location_id': location.id,
             'rma_line_id': line.line_id.id,
@@ -225,7 +224,7 @@ class RmaMakePickingItem(models.TransientModel):
         digits=dp.get_precision('Product Unit of Measure'),
         readonly=True)
     qty_to_receive = fields.Float(
-        string='Quantity To Return',
+        string='Quantity to Receive',
         digits=dp.get_precision('Product Unit of Measure'))
     qty_to_deliver = fields.Float(
         string='Quantity To Deliver',
